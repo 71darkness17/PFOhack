@@ -102,7 +102,6 @@ def transition_value(id: int,df: DataFrame):
 
 # Чтение таблицы обращений
 def requests(id: int, df: DataFrame):
-    # df = pd.read_excel(path).drop(columns=['Дата','Тема','Номер','Тип обращения','Группа вопросов','Количество доработок'], errors='ignore')
     rows = [df.iloc[i].to_list() for i in range(len(df['ID']))]
     reports = 0
     for row in rows:
@@ -185,11 +184,6 @@ def task2(id_table: DataFrame, tables: list, is_for_train: bool, proc, procs):
             elif i == 9:
                 temp1, ctemp = requests(ids[id],tables[i])
                 temp += temp1
-            # elif i == 10:
-            #     temp1, ctemp = transition_value(ids[id],tables[i])
-            #     temp += temp1
-            #     if not ctemp[0] in columns1:
-            #         columns1 += ctemp
             elif i==11:
                 temp1, ctemp = get_region(ids[id], tables[i])
                 temp += temp1
@@ -198,7 +192,6 @@ def task2(id_table: DataFrame, tables: list, is_for_train: bool, proc, procs):
                 temp += temp1
         predataset.append(temp)
         print('.')
-    #print(predataset)
     return predataset
 
 # Главная функция создания ДатаСета
@@ -277,11 +270,6 @@ def create_dataset(paths: list, output: str, is_for_train: bool):
             temp += temp1
             if not ctemp[0] in columns1:
                 columns1 += ctemp
-        # elif i == 10:
-        #     temp1, ctemp = transition_value(ids[0],tables[i])
-        #     temp += temp1
-        #     if not ctemp[0] in columns1:
-        #         columns1 += ctemp
         elif i == 11:
             temp1, ctemp = get_region(ids[0], tables[i])
             temp += temp1
