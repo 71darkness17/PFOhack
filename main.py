@@ -9,10 +9,15 @@ import os
 
 paths = ['РЖДtrain/1/1.xls','РЖДtrain/1/2.xls','РЖДtrain/1/3.xls','РЖДtrain/1/4.xls','РЖДtrain/1/5.xls','РЖДtrain/1/6.xls',
          'РЖДtrain/1/7.xls','РЖДtrain/1/8.xls','РЖДtrain/2/1.xls','РЖДtrain/2/2.xls','РЖДtrain/2/3.xls','РЖДtrain/1.xlsx',]
-ds = create_dataset(paths)
-for column in ds.columns.values:
-    print(column,end="\t")
+create_dataset(paths,'output.csv')
+ds = pd.read_csv('output.csv')
+spaces = []
+for column in ds.columns.values[1:]:
+    spaces.append(len(column)+2)
+    print(column,end="  ")
 print('')
-for column in ds.columns:
-    print(ds[column][0],end="\t")
-#print(ds)
+for i in range(3):
+    for column, space in zip(ds.columns[1:],spaces):
+        print(ds[column].iloc[i],end=' '*(space - len(str(ds[column][i]))))
+    print('')
+# print(ds)
