@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NC's RZD analyzer</title>
+    <link rel="stylesheet" href={{ css }}>
+</head>
+<body>
+    <header>
+        <h1>Загрузить файлы для аналитики</h1>
+    </header>
+    <main>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file-upload" class="custom-file-upload">
+                    Выберите файл
+                </label>
+                <input id="file-upload" type="file" name="file" accept="zip">
+            </div>
+            <img id="preview" src="#" alt="Preview Image">
+            <button type="submit">Загрузить</button>
+        </form>
+    </main>
+</body>
+</html>

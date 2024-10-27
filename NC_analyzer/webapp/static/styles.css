@@ -1,0 +1,95 @@
+/* Сброс стилей для упрощения */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основные стили для тела страницы */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Стили для заголовков таблицы */
+th {
+    background-color: rgba(226, 26, 26);
+    color: white;
+    font-weight: bold;
+}
+
+/* Стили для строк таблицы */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Стили для четных строк */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Стили для четных строк в заголовке */
+th:first-child {
+    border-top-left-radius: 8px;
+}
+
+th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* Стили для последней строки таблицы */
+td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+/* Дополнительные стили для улучшения */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #4CAF50;
+}
+
+#export-button {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ width: 150px;
+ height: 50px;
+ background-color: #333;
+ color: white;
+ padding: 10px 15px;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ font-size: 16px;
+ font-weight: bold;
+ transition: all 0.2s ease;
+ top: 50%;
+ left: 50%;
+ transform: translate(0, 25%);
+}
+
+#export-button:hover {
+ background-color: #222;
+}

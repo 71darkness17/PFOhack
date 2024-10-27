@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>NC's RZD analyzer</title>
+ <link rel="stylesheet" href={{ css }}>
+</head>
+<body>
+  <button id="export-button" style="position: absolute; top: 0; right: 0;">Экспорт в Excel</button>
+   <script>
+	 document.getElementById("export-button").addEventListener("click", function() {
+	 fetch('/export-excel')
+	.then(response => response.blob())
+	.then(blob => {
+	 const url = window.URL.createObjectURL(blob);
+	 const a = document.createElement('a');
+	 a.href = url;
+	 a.download = 'export.xlsx';
+	 document.body.appendChild(a);
+	 a.click();
+	 window.URL.revokeObjectURL(url);
+	 });
+	 });
+ </script>
+ <br>
+ <br>
+ <table>
+ <tr>
+ <th></th>
+ <th>Компания-клиент</th>
+ <th>Вероятность ухода</th>
+ <th>Регион</th>
+ </tr>	
+ <tr>
+ 	{% for i in range(dlen) %}
+ <td>{{ i + 1 }}</td>
+ <td onmouseover="this.title = '{{ data[i][3] }}';" onmouseout="this.title = '';">id {{ data[i][0] }}</td>
+ <td>{{ data[i][1] }}</td>
+ <td>{{ data[i][2] }}</td>
+ </tr>
+ 	{% endfor %}
+ </table>
+
+</body>
+</html>

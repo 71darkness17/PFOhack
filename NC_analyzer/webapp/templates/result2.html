@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NC's RZD analyzer</title>
+    <link rel="stylesheet" href={{ css }}>
+</head>
+<body>
+    <header>
+        <h1>Загрузить файлы для аналитики</h1>
+    </header>
+    <main>
+    	<select id="select-list">
+            <option value="0">все регионы</option>
+                {% for i in regions %}
+                    <option value={{ i.id }}>{{ i.name }}</option>
+                {% endfor %}
+            </select>
+
+	 <button id="send-request-button">Сохранить</button>
+	 <script>
+	 	var btn = document.getElementById("send-request-button");
+		btn.addEventListener("click", function() {
+		  this.classList.add("active");
+		});
+	 </script>
+	 <script>
+        document.getElementById("send-request-button").addEventListener("click", function() {
+            const selectedValue = document.getElementById("select-list").value;
+            fetch('/t', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    selectedValue
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                });
+        });
+    </script>
+    <a href="/res">Далее</a>
+    </main>
+</body>
+</html>
