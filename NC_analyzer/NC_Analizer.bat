@@ -1,2 +1,3 @@
-python3 NC_analyzer/run.py
+cd NC_analyzer
+python3 run.py
 exit
